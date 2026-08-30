@@ -7,7 +7,7 @@
 name=“viewport”
 content=“width=device-width, initial-scale=1.0”
 
-<title>Letters I Never Sent</title>
+<title>Write a Letter | Letters I Never Sent</title>
 <style>
 * {
     box-sizing: border-box;
@@ -42,8 +42,7 @@ h1 {
 .paper {
     background: #e8dcc8;
     padding: 30px 25px;
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.4);
+    box-shadow: 0 15px 40px rgba(0,0,0,.4);
 }
 label {
     display: block;
@@ -54,27 +53,28 @@ label {
 input,
 textarea {
     width: 100%;
-    padding: 14px;
     border: 1px solid #b9aa94;
     background: #f1e7d6;
     color: #3d332b;
+    padding: 13px;
     font-family: Georgia, serif;
     font-size: 16px;
     outline: none;
-}
-textarea {
-    min-height: 330px;
-    resize: vertical;
-    line-height: 1.8;
 }
 input:focus,
 textarea:focus {
     border-color: #796a58;
 }
+textarea {
+    min-height: 320px;
+    resize: vertical;
+    line-height: 1.8;
+}
 button {
+    display: block;
     width: 100%;
-    padding: 16px;
     margin-top: 25px;
+    padding: 16px;
     border: none;
     background: #3d332b;
     color: #e8dcc8;
@@ -85,41 +85,128 @@ button {
 button:active {
     transform: scale(.98);
 }
-.share-section {
+/* =========================
+   PREVIEW
+========================= */
+.preview {
     display: none;
-    margin-top: 25px;
-    background: #e8dcc8;
-    padding: 25px;
-    text-align: center;
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.4);
+    margin-top: 35px;
 }
-.share-section h2 {
+.preview-title {
+    text-align: center;
+    color: #e8dcc8;
+    font-size: 28px;
     font-weight: normal;
-    font-size: 24px;
+    margin-bottom: 8px;
+}
+.preview-subtitle {
+    text-align: center;
+    color: #cbbda9;
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+.letter {
+    background: #e8dcc8;
+    padding: 35px 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.45);
+}
+.letter-heading {
+    text-align: center;
+    color: #796a58;
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 35px;
+}
+.dear {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+.message {
+    white-space: pre-wrap;
+    line-height: 1.9;
+    font-size: 17px;
+}
+/* SONG */
+.song {
+    padding: 20px;
+    margin-bottom: 30px;
+    background: #ded1bd;
+    border: 1px solid #b9aa94;
+    text-align: center;
+}
+.song-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+.song-text {
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.6;
+}
+.song-link {
+    display: inline-block;
+    margin-top: 12px;
+    color: #3d332b;
+    word-break: break-word;
+}
+/* QUOTE */
+.sender-quote {
+    margin: 25px 0;
+    padding: 25px 20px;
+    text-align: center;
+    color: #cbbda9;
+    font-style: italic;
+    line-height: 1.8;
+}
+.quote-mark {
+    font-size: 35px;
+    line-height: .5;
+    color: #e8dcc8;
+}
+/* SHARE */
+.share-box {
+    margin-top: 25px;
+    padding: 25px;
+    background: #e8dcc8;
+    box-shadow: 0 15px 40px rgba(0,0,0,.35);
+}
+.share-box h2 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: normal;
+    color: #3d332b;
     margin-top: 0;
 }
-.share-section p {
+.share-box p {
+    text-align: center;
     color: #5f5348;
     font-style: italic;
     line-height: 1.6;
 }
 .share-link {
     width: 100%;
-    padding: 12px;
-    background: #f1e7d6;
+    padding: 13px;
     border: 1px solid #b9aa94;
+    background: #f1e7d6;
+    color: #3d332b;
     font-family: Arial, sans-serif;
     font-size: 12px;
 }
 .share-button {
     background: #3d332b;
-    color: #e8dcc8;
 }
 .copy-button {
     background: transparent;
     color: #3d332b;
     border: 1px solid #796a58;
+}
+.success {
+    display: none;
+    text-align: center;
+    margin-top: 15px;
+    color: #5f5348;
+    font-style: italic;
 }
 .back {
     text-align: center;
@@ -129,63 +216,123 @@ button:active {
     color: #cbbda9;
     text-decoration: none;
 }
+.new-letter {
+    margin-top: 15px;
+    background: transparent;
+    color: #e8dcc8;
+    border: 1px solid #cbbda9;
+}
 </style>
 </head>
 <body>
 <div class="container">
+<!-- =========================
+     WRITING PAGE
+========================= -->
+<div id="writingPage">
 <h1>
-    Letters I Never Sent
+    Write a Letter
 </h1>
 <p class="subtitle">
-Some words are too difficult to say out loud.
-<br>
-Write them here.
+For the words you never got to say.
 </p>
 <div class="paper">
 <label for="name">
-    Name
+Name
 </label>
 
 <input
 id=“name”
 type=“text”
-placeholder=“Their name…”
+placeholder=“Binkles…”
 
 <label for="song">
-    Song
+Song
 </label>
 
 <input
 id=“song”
 type=“text”
-placeholder=“Paste a YouTube link…”
+placeholder=“Paste a YouTube link (optional)”
 
 <label for="message">
-    Letter
+Letter
 </label>
 <textarea
     id="message"
     placeholder="Dear you,
-I don't really know how to say this...
-There are so many things I've wanted to tell you.
-Write your letter here..."
+I just wanted to say...
+Write everything you never got to say."
 ></textarea>
 <button onclick="createLetter()">
 Create Letter 💌
 </button>
 </div>
+<div class="back">
+<a href="index.html">
+← Back home
+</a>
+</div>
+</div>
+<!-- =========================
+     FINISHED PREVIEW
+========================= -->
 <div
-    class="share-section"
-    id="shareSection"
+    class="preview"
+    id="preview"
 >
+<h1 class="preview-title">
+Your Letter Is Ready 💌
+</h1>
+<p class="preview-subtitle">
+This is how your letter will appear.
+<br>
+Read it one more time before sending.
+</p>
+<div class="letter">
+<div class="letter-heading">
+Letters I Never Sent
+</div>
+<div class="dear">
+Dear
+<span id="previewName"></span>,
+</div>
+<!-- SONG -->
+<div
+    class="song"
+    id="previewSong"
+>
+<div class="song-title">
+🎵 Playing song
+</div>
+<div class="song-text">
+Please play the song while reading.
+</div>
+<div id="songContent"></div>
+</div>
+<!-- MESSAGE -->
+<div
+    class="message"
+    id="previewMessage"
+></div>
+</div>
+<!-- BEAUTIFUL QUOTE -->
+<div class="sender-quote">
+<div class="quote-mark">
+    “
+</div>
+<div class="quote-mark">
+    ”
+</div>
+</div>
+<!-- SHARE -->
+<div class="share-box">
 <h2>
-    Your letter is ready. 💌
+Ready to send it? 💌
 </h2>
 <p>
-Your letter has been created.
-<br>
-Send this link to the person
-you wrote it for.
+Copy the link below and send it
+to the person you wrote this for.
 </p>
 
 <input
@@ -197,7 +344,7 @@ readonly
 class=“share-button”
 onclick=“shareLetter()”
 
-Share the Letter 💌
+Share Letter 💌
 </button>
 
 <button
@@ -206,14 +353,42 @@ onclick=“copyLink()”
 
 Copy Letter Link 🔗
 </button>
+<div
+    class="success"
+    id="success"
+>
+Your letter link has been copied. 💌
 </div>
-<div class="back">
-<a href="index.html">
-← Back home
-</a>
+</div>
+
+<button
+class=“new-letter”
+onclick=“newLetter()”
+
+Write Another Letter
+</button>
 </div>
 </div>
 <script>
+/* =========================
+   BEAUTIFUL SENDER QUOTES
+========================= */
+const quotes = [
+    "Some words may never be spoken, but they still deserve to be heard.",
+    "Sometimes writing is the only way to say what the heart has been holding onto.",
+    "You don't need the perfect words. You only need the courage to be honest.",
+    "A letter can carry feelings that are too heavy to say out loud.",
+    "Maybe they never knew. Now they have the chance to.",
+    "Some feelings are meant to be written down before they are forgotten.",
+    "What matters is not how perfectly you said it, but that you finally said it.",
+    "There are words we keep inside for too long. Maybe today is the day they finally leave.",
+    "Even a simple letter can mean more than you realize.",
+    "If your heart had a voice, maybe this is what it wanted to say."
+];
+let currentLetter = null;
+/* =========================
+   CREATE LETTER
+========================= */
 function createLetter() {
     const name =
         document
@@ -230,95 +405,260 @@ function createLetter() {
         .getElementById("message")
         .value
         .trim();
-    if (!name) {
+    if (name === "") {
         alert(
             "Please enter their name. 💌"
         );
         return;
     }
-    if (!message) {
+    if (message === "") {
         alert(
-            "Please write your letter. 💌"
+            "Please write your letter first. 💌"
         );
         return;
     }
-    const data = {
+    currentLetter = {
         name: name,
         song: song,
         message: message
     };
-    const encoded =
-        btoa(
-            encodeURIComponent(
-                JSON.stringify(data)
-            )
+    /* SHOW NAME */
+    document.getElementById(
+        "previewName"
+    ).textContent =
+        name;
+    /* SHOW MESSAGE */
+    document.getElementById(
+        "previewMessage"
+    ).textContent =
+        message;
+    /* SONG */
+    const songBox =
+        document.getElementById(
+            "previewSong"
         );
-    const baseURL =
-        window.location.href
-        .split("?")[0];
-    const link =
-        baseURL
-        .replace(
-            "letter.html",
-            "view.html"
-        )
-        +
-        "?letter="
-        +
-        encodeURIComponent(encoded);
+    const songContent =
+        document.getElementById(
+            "songContent"
+        );
+    if (song !== "") {
+        songBox.style.display =
+            "block";
+        songContent.innerHTML =
+            "<a " +
+            "class='song-link' " +
+            "href='" +
+            escapeHTML(song) +
+            "' " +
+            "target='_blank'>" +
+            "Open song on YouTube 🎵" +
+            "</a>";
+    }
+    else {
+        songBox.style.display =
+            "none";
+    }
+    /* RANDOM QUOTE */
+    const randomQuote =
+        quotes[
+            Math.floor(
+                Math.random() *
+                quotes.length
+            )
+        ];
     document.getElementById(
-        "shareLink"
-    ).value = link;
+        "quote"
+    ).textContent =
+        randomQuote;
+    /* CREATE RECIPIENT LINK */
+    try {
+        const json =
+            JSON.stringify(
+                currentLetter
+            );
+        const encoded =
+            btoa(
+                encodeURIComponent(
+                    json
+                )
+            );
+        const viewURL =
+            window.location.origin +
+            window.location.pathname
+                .replace(
+                    "letter.html",
+                    "view.html"
+                );
+        const finalLink =
+            viewURL +
+            "?letter=" +
+            encodeURIComponent(
+                encoded
+            );
+        document.getElementById(
+            "shareLink"
+        ).value =
+            finalLink;
+    }
+    catch (error) {
+        alert(
+            "Could not create the letter link. Please try again."
+        );
+        return;
+    }
+    /* HIDE WRITING PAGE */
     document.getElementById(
-        "shareSection"
-    ).style.display = "block";
+        "writingPage"
+    ).style.display =
+        "none";
+    /* SHOW PREVIEW */
+    document.getElementById(
+        "preview"
+    ).style.display =
+        "block";
     window.scrollTo({
-        top:
-            document.body.scrollHeight,
-        behavior:
-            "smooth"
+        top: 0,
+        behavior: "smooth"
     });
 }
+/* =========================
+   COPY LINK
+========================= */
 function copyLink() {
-    const link =
+    const input =
         document.getElementById(
             "shareLink"
         );
-    link.select();
-    navigator.clipboard
-        .writeText(link.value)
-        .then(function() {
-            alert(
-                "Letter link copied! 💌"
-            );
-        })
-        .catch(function() {
-            alert(
-                "Please copy the link manually."
-            );
-        });
+    const text =
+        input.value;
+    if (
+        navigator.clipboard &&
+        window.isSecureContext
+    ) {
+        navigator.clipboard
+            .writeText(text)
+            .then(function() {
+                showCopied();
+            })
+            .catch(function() {
+                fallbackCopy(input);
+            });
+    }
+    else {
+        fallbackCopy(input);
+    }
 }
+function fallbackCopy(input) {
+    input.focus();
+    input.select();
+    input.setSelectionRange(
+        0,
+        99999
+    );
+    try {
+        document.execCommand(
+            "copy"
+        );
+        showCopied();
+    }
+    catch (error) {
+        alert(
+            "Please copy the link manually."
+        );
+    }
+}
+function showCopied() {
+    const success =
+        document.getElementById(
+            "success"
+        );
+    success.style.display =
+        "block";
+    setTimeout(function() {
+        success.style.display =
+            "none";
+    }, 3000);
+}
+/* =========================
+   SHARE
+========================= */
 async function shareLetter() {
     const link =
         document.getElementById(
             "shareLink"
         ).value;
-    if (navigator.share) {
+    if (
+        navigator.share
+    ) {
         try {
             await navigator.share({
                 title:
                     "Someone left you a letter 💌",
                 text:
-                    "Someone left you a letter. Please play the song while reading.",
+                    "Someone left you a letter. 💌",
                 url:
                     link
             });
-        } catch (error) {
-            // Sharing cancelled.
         }
-    } else {
+        catch (error) {
+            /* User cancelled sharing. */
+        }
+    }
+    else {
         copyLink();
     }
+}
+/* =========================
+   NEW LETTER
+========================= */
+function newLetter() {
+    document.getElementById(
+        "name"
+    ).value = "";
+    document.getElementById(
+        "song"
+    ).value = "";
+    document.getElementById(
+        "message"
+    ).value = "";
+    document.getElementById(
+        "preview"
+    ).style.display =
+        "none";
+    document.getElementById(
+        "writingPage"
+    ).style.display =
+        "block";
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+/* =========================
+   BASIC HTML ESCAPING
+========================= */
+function escapeHTML(text) {
+    return text
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 }
 </script>
 </body>
