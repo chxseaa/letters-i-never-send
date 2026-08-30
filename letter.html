@@ -2,148 +2,133 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+name=“viewport”
+content=“width=device-width, initial-scale=1.0”
+
 <title>Letters I Never Sent</title>
 <style>
-    * {
-        box-sizing: border-box;
-    }
-    body {
-        margin: 0;
-        min-height: 100vh;
-        padding: 30px 18px;
-        background: #241f1b;
-        color: #3d332b;
-        font-family: Georgia, serif;
-    }
-    .container {
-        width: 100%;
-        max-width: 650px;
-        margin: auto;
-    }
-    h1 {
-        text-align: center;
-        color: #e8dcc8;
-        font-size: 34px;
-        font-weight: normal;
-        margin-bottom: 8px;
-    }
-    .subtitle {
-        text-align: center;
-        color: #cbbda9;
-        font-style: italic;
-        line-height: 1.7;
-        margin-bottom: 30px;
-    }
-    .paper {
-        background: #e8dcc8;
-        padding: 30px 25px;
-        box-shadow:
-            0 15px 40px rgba(0,0,0,.4);
-    }
-    .intro {
-        text-align: center;
-        line-height: 1.7;
-        margin-bottom: 30px;
-    }
-    .intro strong {
-        font-size: 20px;
-        font-weight: normal;
-    }
-    label {
-        display: block;
-        margin-top: 22px;
-        margin-bottom: 8px;
-        font-size: 15px;
-    }
-    input,
-    textarea {
-        width: 100%;
-        border: 1px solid #b9aa94;
-        background: #f1e7d6;
-        color: #3d332b;
-        padding: 13px;
-        font-family: Georgia, serif;
-        font-size: 16px;
-        outline: none;
-    }
-    input:focus,
-    textarea:focus {
-        border-color: #796a58;
-    }
-    input::placeholder,
-    textarea::placeholder {
-        color: #887967;
-    }
-    textarea {
-        min-height: 320px;
-        resize: vertical;
-        line-height: 1.8;
-    }
-    .example {
-        background: #ded1bd;
-        border-left: 3px solid #796a58;
-        padding: 15px;
-        margin-top: 10px;
-        font-size: 14px;
-        line-height: 1.7;
-        font-style: italic;
-        color: #5b4e42;
-    }
-    .hint {
-        font-size: 13px;
-        font-style: italic;
-        opacity: .7;
-        line-height: 1.6;
-        margin-top: 8px;
-    }
-    .song-section {
-        margin-top: 30px;
-        padding: 20px;
-        border: 1px solid #b9aa94;
-        background: #ded1bd;
-    }
-    .song-title {
-        font-size: 18px;
-        text-align: center;
-        margin-bottom: 8px;
-    }
-    .song-description {
-        text-align: center;
-        font-size: 13px;
-        font-style: italic;
-        line-height: 1.6;
-        margin-bottom: 15px;
-    }
-    button {
-        display: block;
-        width: 100%;
-        margin-top: 28px;
-        padding: 16px;
-        border: none;
-        background: #3d332b;
-        color: #e8dcc8;
-        font-family: Georgia, serif;
-        font-size: 16px;
-        cursor: pointer;
-    }
-    button:hover {
-        background: #51443a;
-    }
-    button:active {
-        transform: scale(.98);
-    }
-    .back {
-        text-align: center;
-        margin-top: 20px;
-    }
-    .back a {
-        color: #cbbda9;
-        text-decoration: none;
-    }
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 30px 18px;
+    background: #241f1b;
+    color: #3d332b;
+    font-family: Georgia, serif;
+}
+.container {
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+}
+h1 {
+    text-align: center;
+    color: #e8dcc8;
+    font-size: 34px;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+.subtitle {
+    text-align: center;
+    color: #cbbda9;
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+.paper {
+    background: #e8dcc8;
+    padding: 30px 25px;
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.4);
+}
+label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+input,
+textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #b9aa94;
+    background: #f1e7d6;
+    color: #3d332b;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    outline: none;
+}
+textarea {
+    min-height: 330px;
+    resize: vertical;
+    line-height: 1.8;
+}
+input:focus,
+textarea:focus {
+    border-color: #796a58;
+}
+button {
+    width: 100%;
+    padding: 16px;
+    margin-top: 25px;
+    border: none;
+    background: #3d332b;
+    color: #e8dcc8;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:active {
+    transform: scale(.98);
+}
+.share-section {
+    display: none;
+    margin-top: 25px;
+    background: #e8dcc8;
+    padding: 25px;
+    text-align: center;
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.4);
+}
+.share-section h2 {
+    font-weight: normal;
+    font-size: 24px;
+    margin-top: 0;
+}
+.share-section p {
+    color: #5f5348;
+    font-style: italic;
+    line-height: 1.6;
+}
+.share-link {
+    width: 100%;
+    padding: 12px;
+    background: #f1e7d6;
+    border: 1px solid #b9aa94;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+.share-button {
+    background: #3d332b;
+    color: #e8dcc8;
+}
+.copy-button {
+    background: transparent;
+    color: #3d332b;
+    border: 1px solid #796a58;
+}
+.back {
+    text-align: center;
+    margin-top: 20px;
+}
+.back a {
+    color: #cbbda9;
+    text-decoration: none;
+}
 </style>
 </head>
 <body>
@@ -152,131 +137,115 @@
     Letters I Never Sent
 </h1>
 <p class="subtitle">
-    Some words are too difficult to say out loud.
-    <br>
-    So write them down.
+Some words are too difficult to say out loud.
+<br>
+Write them here.
 </p>
 <div class="paper">
-    <div class="intro">
-        <strong>
-            Write the letter you never sent.
-        </strong>
-        <br>
-        Maybe this time,
-        they'll finally read it.
-    </div>
-    <label for="name">
-        Who is this letter for?
-    </label>
-    <input
-        id="name"
-        type="text"
-        placeholder="Their name..."
-    >
-    <!-- SONG SECTION -->
-    <div class="song-section">
-        <div class="song-title">
-            🎵 Choose a song
-        </div>
-        <div class="song-description">
-            Choose a song to play while they are
-            reading your message.
-            <br>
-            The song will appear above the letter
-            when they open it.
-        </div>
-        <input
-            id="song"
-            type="text"
-            placeholder="Paste a YouTube link..."
-        >
-    </div>
-    <!-- LETTER -->
-    <label for="message">
-        Your letter
-    </label>
-    <textarea
-        id="message"
-        placeholder="Dear you,
+<label for="name">
+    Name
+</label>
 
-I’m not really sure how to say this…
+<input
+id=“name”
+type=“text”
+placeholder=“Their name…”
 
-I just want you to know how grateful I am that you came into my life.
+<label for="song">
+    Song
+</label>
 
-There are so many things I’ve wanted to tell you…
+<input
+id=“song”
+type=“text”
+placeholder=“Paste a YouTube link…”
 
-Write your letter here.”
+<label for="message">
+    Letter
+</label>
+<textarea
+    id="message"
+    placeholder="Dear you,
+I don't really know how to say this...
+There are so many things I've wanted to tell you.
+Write your letter here..."
+></textarea>
+<button onclick="createLetter()">
+Create Letter 💌
+</button>
+</div>
+<div
+    class="share-section"
+    id="shareSection"
 >
+<h2>
+    Your letter is ready. 💌
+</h2>
+<p>
+Your letter has been created.
+<br>
+Send this link to the person
+you wrote it for.
+</p>
 
-    <div class="example">
-        Example:
-        <br><br>
-        Dear you,
-        <br><br>
-        I've been wanting to say this for a
-        long time. I'm grateful for every
-        moment we've shared, and I hope you
-        know how much you mean to me.
-        <br><br>
-        — Someone who never got to say it
-    </div>
-    <p class="hint">
-        You don't need perfect words.
-        Just write what your heart wants to say.
-    </p>
-    <button onclick="createLetter()">
-        Send This Letter 💌
-    </button>
+<input
+class=“share-link”
+id=“shareLink”
+readonly
+
+<button
+class=“share-button”
+onclick=“shareLetter()”
+
+Share the Letter 💌
+</button>
+
+<button
+class=“copy-button”
+onclick=“copyLink()”
+
+Copy Letter Link 🔗
+</button>
 </div>
 <div class="back">
-    <a href="index.html">
-        ← Back home
-    </a>
+<a href="index.html">
+← Back home
+</a>
 </div>
 </div>
 <script>
 function createLetter() {
     const name =
         document
-            .getElementById("name")
-            .value
-            .trim();
-    const message =
-        document
-            .getElementById("message")
-            .value
-            .trim();
+        .getElementById("name")
+        .value
+        .trim();
     const song =
         document
-            .getElementById("song")
-            .value
-            .trim();
-    if (name === "") {
+        .getElementById("song")
+        .value
+        .trim();
+    const message =
+        document
+        .getElementById("message")
+        .value
+        .trim();
+    if (!name) {
         alert(
-            "Who is this letter for? 💌"
+            "Please enter their name. 💌"
         );
         return;
     }
-    if (message === "") {
+    if (!message) {
         alert(
-            "Write your letter first. 💌"
-        );
-        return;
-    }
-    if (
-        song !== "" &&
-        !song.includes("youtube.com") &&
-        !song.includes("youtu.be")
-    ) {
-        alert(
-            "Please paste a valid YouTube link for the song. 🎵"
+            "Please write your letter. 💌"
         );
         return;
     }
     const data = {
         name: name,
-        message: message,
-        song: song
+        song: song,
+        message: message
     };
     const encoded =
         btoa(
@@ -284,9 +253,72 @@ function createLetter() {
                 JSON.stringify(data)
             )
         );
-    window.location.href =
-        "preview.html?letter=" +
-        encoded;
+    const baseURL =
+        window.location.href
+        .split("?")[0];
+    const link =
+        baseURL
+        .replace(
+            "letter.html",
+            "view.html"
+        )
+        +
+        "?letter="
+        +
+        encodeURIComponent(encoded);
+    document.getElementById(
+        "shareLink"
+    ).value = link;
+    document.getElementById(
+        "shareSection"
+    ).style.display = "block";
+    window.scrollTo({
+        top:
+            document.body.scrollHeight,
+        behavior:
+            "smooth"
+    });
+}
+function copyLink() {
+    const link =
+        document.getElementById(
+            "shareLink"
+        );
+    link.select();
+    navigator.clipboard
+        .writeText(link.value)
+        .then(function() {
+            alert(
+                "Letter link copied! 💌"
+            );
+        })
+        .catch(function() {
+            alert(
+                "Please copy the link manually."
+            );
+        });
+}
+async function shareLetter() {
+    const link =
+        document.getElementById(
+            "shareLink"
+        ).value;
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title:
+                    "Someone left you a letter 💌",
+                text:
+                    "Someone left you a letter. Please play the song while reading.",
+                url:
+                    link
+            });
+        } catch (error) {
+            // Sharing cancelled.
+        }
+    } else {
+        copyLink();
+    }
 }
 </script>
 </body>
