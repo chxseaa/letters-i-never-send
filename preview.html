@@ -245,22 +245,33 @@ async function shareLetter() {
 
     if (navigator.share) {
 
-        await navigator.share({
-            title: "Letters I Never Send",
-            text: text,
-            url: url
-        });
+        try {
+            await navigator.share({
+                title: "Letters I Never Send",
+                text: text,
+                url: url
+            });
+        } catch (error) {
+            console.log("Share cancelled.");
+        }
 
     } else {
 
-        await navigator.clipboard.writeText(url);
+        try {
+            await navigator.clipboard.writeText(url);
 
-        alert(
-            "Letter link copied! 💌 Send it to them."
-        );
+            alert(
+                "Letter link copied! 💌 Send it to them."
+            );
 
+        } catch (error) {
+
+            alert(
+                "Copy this page's link and send it to them. 💌"
+            );
+
+        }
     }
-
 }
 
 </script>
