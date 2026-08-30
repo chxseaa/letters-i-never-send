@@ -1,304 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Letters I Never Send</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            padding: 30px 18px;
-            min-height: 100vh;
-            background: #241f1b;
-            color: #3d332b;
-            font-family: Georgia, serif;
-        }
-
-        h1 {
-            text-align: center;
-            color: #e8dcc8;
-            font-weight: normal;
-        }
-
-        .paper {
-            max-width: 650px;
-            margin: 30px auto;
-            padding: 35px 25px;
-            background: #e8dcc8;
-            box-shadow: 0 15px 40px rgba(0,0,0,.4);
-        }
-
-        #dear {
-            font-size: 21px;
-        }
-
-        #letter {
-            white-space: pre-wrap;
-            line-height: 1.8;
-            font-size: 17px;
-        }
-
-        .song {
-            margin-top: 30px;
-            padding: 20px;
-            background: #d5c4aa;
-            text-align: center;
-        }
-
-        .song-title {
-            margin-bottom: 15px;
-        }
-
-        .play-button,
-        .share-button {
-            border: none;
-            padding: 13px 20px;
-            margin: 7px;
-            font-family: Georgia, serif;
-            cursor: pointer;
-        }
-
-        .play-button {
-            background: #3d332b;
-            color: #e8dcc8;
-        }
-
-        .share-button {
-            background: #796a58;
-            color: white;
-        }
-
-        .reflection {
-            margin-top: 30px;
-            padding: 20px;
-            background: #d5c4aa;
-            text-align: center;
-            line-height: 1.6;
-            font-style: italic;
-        }
-
-        .back {
-            display: block;
-            text-align: center;
-            margin-top: 25px;
-            color: #e8dcc8;
-            text-decoration: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+<title>Your Letter Is Ready</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        margin: 0;
+        min-height: 100vh;
+        padding: 30px 18px;
+        background: #241f1b;
+        color: #e8dcc8;
+        font-family: Georgia, serif;
+    }
+    .container {
+        max-width: 650px;
+        margin: auto;
+    }
+    h1 {
+        text-align: center;
+        font-size: 34px;
+        font-weight: normal;
+        margin-bottom: 10px;
+    }
+    .subtitle {
+        text-align: center;
+        color: #cbbda9;
+        font-style: italic;
+        line-height: 1.7;
+    }
+    .paper {
+        background: #e8dcc8;
+        color: #3d332b;
+        padding: 35px 25px;
+        margin-top: 30px;
+        box-shadow:
+            0 15px 40px rgba(0,0,0,.4);
+    }
+    .to {
+        font-size: 18px;
+        margin-bottom: 25px;
+    }
+    .message {
+        white-space: pre-wrap;
+        line-height: 1.8;
+        font-size: 17px;
+    }
+    .song {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #b9aa94;
+        font-size: 14px;
+        font-style: italic;
+    }
+    .share-box {
+        margin-top: 30px;
+        padding: 25px;
+        border: 1px solid #796a58;
+        text-align: center;
+    }
+    .share-box strong {
+        font-size: 20px;
+        font-weight: normal;
+    }
+    .share-box p {
+        color: #cbbda9;
+        line-height: 1.7;
+        font-size: 14px;
+    }
+    .link {
+        width: 100%;
+        padding: 13px;
+        border: 1px solid #b9aa94;
+        background: #f1e7d6;
+        color: #3d332b;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+    }
+    button {
+        width: 100%;
+        padding: 15px;
+        margin-top: 12px;
+        border: none;
+        background: #e8dcc8;
+        color: #3d332b;
+        border: 1px solid #796a58;
+        font-family: Georgia, serif;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #f1e7d6;
+    }
+    .back {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .back a {
+        color: #cbbda9;
+        text-decoration: none;
+    }
+</style>
 </head>
-
 <body>
-
-<h1>Letters I Never Send</h1>
-
+<div class="container">
+<h1>
+    Your Letter Is Ready
+</h1>
+<p class="subtitle">
+    You wrote the words.
+    <br>
+    Now let them reach the person
+    they're meant for.
+</p>
 <div class="paper">
-
-    <p id="dear"></p>
-
-    <div id="letter"></div>
-
-    <div class="song">
-
-        <div class="song-title">
-            🎵 <strong id="song"></strong>
-        </div>
-
-        <button
-            class="play-button"
-            onclick="playSong()">
-            ▶ Play Song
-        </button>
-
+    <div class="to">
+        To:
+        <span id="name"></span>
     </div>
-
-    <div class="reflection">
-
-        <h3>A little reminder for you</h3>
-
-        <p id="advice"></p>
-
-    </div>
-
-    <button
-        class="share-button"
-        onclick="shareLetter()">
-        💌 Share Letter
-    </button>
-
+    <div
+        class="message"
+        id="message"
+    ></div>
+    <div
+        class="song"
+        id="song"
+    ></div>
 </div>
-
-<a class="back" href="letter.html">
-    ← Write another letter
-</a>
-
-
+<div class="share-box">
+    <strong>
+        Give them the letter 💌
+    </strong>
+    <p>
+        Copy the link below and send it
+        to them.
+        <br>
+        They will see the letter
+        when they open it.
+    </p>
+    <input
+        class="link"
+        id="shareLink"
+        readonly
+    >
+    <button onclick="copyLink()">
+        Copy Letter Link 🔗
+    </button>
+    <button onclick="shareLetter()">
+        Share Letter 💌
+    </button>
+</div>
+<div class="back">
+    <a href="letter.html">
+        ← Write another letter
+    </a>
+</div>
+</div>
 <script>
-
-const params =
-    new URLSearchParams(window.location.search);
-
-const encoded =
-    params.get("letter");
-
-let name = "You";
-let message = "";
-let song = "No song chosen.";
-
-if (encoded) {
-
-    try {
-
-        const data =
-            JSON.parse(
-                decodeURIComponent(
-                    atob(encoded)
-                )
-            );
-
-        name = data.name || "You";
-        message = data.message || "";
-        song = data.song || "No song chosen.";
-
-    } catch (error) {
-
-        console.log(
-            "Unable to read the letter."
+function getLetter() {
+    const params =
+        new URLSearchParams(
+            window.location.search
         );
-
-    }
-}
-
-
-document.getElementById("dear").textContent =
-    "Dear " + name + ",";
-
-document.getElementById("letter").textContent =
-    message;
-
-document.getElementById("song").textContent =
-    song;
-
-
-/* Automatic reflection */
-
-function getAdvice(text) {
-
-    const words = text.toLowerCase();
-
-    if (
-        words.includes("miss") ||
-        words.includes("missing")
-    ) {
-        return "Missing someone doesn't always mean you need to return to them. Sometimes it simply means they mattered.";
-    }
-
-    if (
-        words.includes("sorry") ||
-        words.includes("regret")
-    ) {
-        return "You cannot rewrite the past, but you can carry its lessons gently into tomorrow.";
-    }
-
-    if (
-        words.includes("goodbye") ||
-        words.includes("let go")
-    ) {
-        return "Letting go doesn't erase what you felt. It gives you room to keep growing.";
-    }
-
-    if (
-        words.includes("love") ||
-        words.includes("loved")
-    ) {
-        return "Some love stories end, but that doesn't make the love meaningless. Keep the memories that helped you grow.";
-    }
-
-    if (
-        words.includes("hope") ||
-        words.includes("maybe")
-    ) {
-        return "Hope can be beautiful. Just remember to leave some hope for yourself, too.";
-    }
-
-    return "Some words are meant to be written, even when we don't know where they will lead. Be gentle with your heart.";
-}
-
-
-document.getElementById("advice").textContent =
-    getAdvice(message);
-
-
-/* Song */
-
-function playSong() {
-
-    if (
-        song.startsWith("http://") ||
-        song.startsWith("https://")
-    ) {
-
-        window.open(song, "_blank");
-
-    } else {
-
+    const encoded =
+        params.get("letter");
+    if (!encoded) {
         alert(
-            "Add a YouTube or Spotify link as the song to play it. 🎵"
+            "No letter found."
         );
-
+        return null;
     }
-
+    try {
+        return JSON.parse(
+            decodeURIComponent(
+                atob(encoded)
+            )
+        );
+    } catch (error) {
+        alert(
+            "This letter link is invalid."
+        );
+        return null;
+    }
 }
-
-
-/* Share */
-
-async function shareLetter() {
-
-    const text =
-        "I left something I never got to say here. 💌";
-
-    const url =
+const letter = getLetter();
+if (letter) {
+    document.getElementById(
+        "name"
+    ).textContent =
+        letter.name;
+    document.getElementById(
+        "message"
+    ).textContent =
+        letter.message;
+    const songElement =
+        document.getElementById("song");
+    if (letter.song) {
+        songElement.textContent =
+            "🎵 " + letter.song;
+    } else {
+        songElement.style.display =
+            "none";
+    }
+    const currentURL =
         window.location.href;
-
+    const viewURL =
+        currentURL.replace(
+            "preview.html",
+            "view.html"
+        );
+    document.getElementById(
+        "shareLink"
+    ).value =
+        viewURL;
+}
+function copyLink() {
+    const input =
+        document.getElementById(
+            "shareLink"
+        );
+    input.select();
+    navigator.clipboard
+        .writeText(input.value)
+        .then(function() {
+            alert(
+                "Letter link copied! 💌"
+            );
+        })
+        .catch(function() {
+            alert(
+                "Please copy the link manually."
+            );
+        });
+}
+async function shareLetter() {
+    const link =
+        document.getElementById(
+            "shareLink"
+        ).value;
     if (navigator.share) {
-
         try {
             await navigator.share({
-                title: "Letters I Never Send",
-                text: text,
-                url: url
+                title:
+                    "Someone left you a letter 💌",
+                text:
+                    "Someone left you a letter. Open it when you're ready.",
+                url: link
             });
         } catch (error) {
-            console.log("Share cancelled.");
+            // User cancelled sharing.
         }
-
     } else {
-
-        try {
-            await navigator.clipboard.writeText(url);
-
-            alert(
-                "Letter link copied! 💌 Send it to them."
-            );
-
-        } catch (error) {
-
-            alert(
-                "Copy this page's link and send it to them. 💌"
-            );
-
-        }
+        copyLink();
     }
 }
-
 </script>
-
 </body>
 </html>
