@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Your Letter | Letters I Never Send</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 30px 20px;
+    background: #241f1b;
+    color: #3d332b;
+    font-family: Georgia, serif;
+}
+
+h1 {
+    text-align: center;
+    color: #e8dcc8;
+    font-weight: normal;
+}
+
+.paper {
+    max-width: 650px;
+    margin: 30px auto;
+    padding: 40px;
+    background: #e8dcc8;
+    box-shadow: 0 15px 40px rgba(0,0,0,.4);
+}
+
+.dear {
+    font-size: 22px;
+}
+
+.letter {
+    white-space: pre-wrap;
+    line-height: 1.8;
+    font-size: 18px;
+}
+
+.song {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #b8a990;
+}
+
+.reflection {
+    margin-top: 30px;
+    padding: 20px;
+    background: #d5c4aa;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+button {
+    display: block;
+    margin: 25px auto;
+    padding: 14px 25px;
+    border: 1px solid #c7b79f;
+    border-radius: 30px;
+    background: transparent;
+    color: #e8dcc8;
+    font-family: Georgia, serif;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Letters I Never Send</h1>
+
+<div class="paper">
+
+    <p class="dear" id="dear"></p>
+
+    <div class="letter" id="letter"></div>
+
+    <div class="song">
+        🎵 <strong>Song chosen for this letter</strong>
+        <p id="song"></p>
+    </div>
+
+    <div class="reflection">
+        <h3>A little reminder for you</h3>
+        <p id="advice"></p>
+    </div>
+
+</div>
+
+<button onclick="history.back()">← Edit Letter</button>
+
+<script>
+
+const name =
+    localStorage.getItem("letterName") || "You";
+
+const message =
+    localStorage.getItem("letterMessage") || "";
+
+const song =
+    localStorage.getItem("letterSong") || "No song chosen.";
+
+document.getElementById("dear").textContent =
+    "Dear " + name + ",";
+
+document.getElementById("letter").textContent =
+    message;
+
+document.getElementById("song").textContent =
+    song;
+
+
+function getAdvice(text) {
+
+    const words = text.toLowerCase();
+
+    if (words.includes("miss") ||
+        words.includes("missing")) {
+
+        return "Missing someone doesn't always mean you need to return to them. Sometimes, it simply means they mattered.";
+
+    }
+
+    if (words.includes("sorry") ||
+        words.includes("regret")) {
+
+        return "You cannot rewrite yesterday, but you can carry its lessons gently into tomorrow.";
+
+    }
+
+    if (words.includes("goodbye") ||
+        words.includes("let go")) {
+
+        return "Letting go doesn't erase what you felt. It gives you space to keep growing.";
+
+    }
+
+    if (words.includes("love") ||
+        words.includes("loved")) {
+
+        return "Some love stories end, but that doesn't make the love meaningless. Keep the memories that helped you grow.";
+
+    }
+
+    if (words.includes("hope") ||
+        words.includes("maybe")) {
+
+        return "Hope can be beautiful. Just remember to leave some hope for yourself, too.";
+
+    }
+
+    return "Some words are meant to be written, even when we don't know where they will lead. Be gentle with your heart.";
+}
+
+document.getElementById("advice").textContent =
+    getAdvice(message);
+
+</script>
+
+</body>
+</html>
