@@ -1,163 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Write a Letter | Letters I Never Send</title>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 30px 20px;
-            background: #241f1b;
-            color: #e8dcc8;
-            font-family: Georgia, serif;
+<meta charset="UTF-8">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+<title>A Letter For You 💌</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background: #241f1b;
+        color: #3d332b;
+        font-family: Georgia, serif;
+        padding: 25px 18px;
+    }
+    .container {
+        width: 100%;
+        max-width: 650px;
+        margin: auto;
+        text-align: center;
+    }
+    .intro {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #e8dcc8;
+    }
+    .envelope {
+        font-size: 80px;
+        margin-bottom: 25px;
+        animation:
+            float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+        0% {
+            transform: translateY(0);
         }
-
-        .container {
-            max-width: 650px;
-            margin: auto;
+        50% {
+            transform: translateY(-8px);
         }
-
-        h1 {
-            text-align: center;
-            font-weight: normal;
-            font-size: 38px;
+        100% {
+            transform: translateY(0);
         }
-
-        .subtitle {
-            text-align: center;
-            color: #a99b8a;
-            font-style: italic;
-            margin-bottom: 35px;
+    }
+    .intro h1 {
+        font-size: 34px;
+        font-weight: normal;
+        margin: 0 0 15px;
+    }
+    .intro p {
+        color: #cbbda9;
+        font-style: italic;
+        line-height: 1.8;
+        max-width: 450px;
+    }
+    .open-button {
+        margin-top: 20px;
+        padding: 15px 28px;
+        border: 1px solid #cbbda9;
+        background: transparent;
+        color: #e8dcc8;
+        font-family: Georgia, serif;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .open-button:hover {
+        background: #e8dcc8;
+        color: #241f1b;
+    }
+    .letter {
+        display: none;
+        background: #e8dcc8;
+        padding: 35px 25px;
+        margin-top: 25px;
+        text-align: left;
+        box-shadow:
+            0 15px 40px rgba(0,0,0,.4);
+        animation:
+            letterAppear 1s ease;
+    }
+    @keyframes letterAppear {
+        from {
+            opacity: 0;
+            transform:
+                translateY(30px);
         }
-
-        label {
-            display: block;
-            margin-top: 20px;
-            margin-bottom: 8px;
+        to {
+            opacity: 1;
+            transform:
+                translateY(0);
         }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 14px;
-            box-sizing: border-box;
-
-            background: #e8dcc8;
-            color: #302923;
-
-            border: none;
-            border-radius: 4px;
-
-            font-family: Georgia, serif;
-            font-size: 16px;
-        }
-
-        textarea {
-            min-height: 300px;
-            resize: vertical;
-            line-height: 1.6;
-        }
-
-        button {
-            display: block;
-            margin: 30px auto;
-
-            padding: 15px 30px;
-
-            background: transparent;
-            color: #e8dcc8;
-
-            border: 1px solid #c7b79f;
-            border-radius: 30px;
-
-            font-family: Georgia, serif;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:active {
-            background: #e8dcc8;
-            color: #241f1b;
-        }
-    </style>
+    }
+    .letter-title {
+        text-align: center;
+        color: #796a58;
+        font-size: 14px;
+        font-style: italic;
+        margin-bottom: 30px;
+    }
+    .to {
+        font-size: 19px;
+        margin-bottom: 25px;
+    }
+    .message {
+        white-space: pre-wrap;
+        line-height: 1.9;
+        font-size: 17px;
+    }
+    .song {
+        border-top: 1px solid #b9aa94;
+        margin-top: 30px;
+        padding-top: 22px;
+        font-size: 14px;
+        font-style: italic;
+    }
+    .song a {
+        color: #3d332b;
+        word-break: break-word;
+    }
+    .music-player {
+        width: 100%;
+        height: 80px;
+        margin-top: 15px;
+        border: none;
+    }
+    .ending {
+        color: #cbbda9;
+        font-style: italic;
+        line-height: 1.8;
+        text-align: center;
+        margin: 40px 10px;
+        padding-bottom: 30px;
+    }
+    .hidden {
+        display: none;
+    }
+</style>
 </head>
-
 <body>
-
 <div class="container">
-
-    <h1>Write Your Letter</h1>
-
-    <p class="subtitle">
-        Write everything you never got to say.
+<div
+    class="intro"
+    id="intro"
+>
+    <div class="envelope">
+        💌
+    </div>
+    <h1>
+        Someone left you a letter.
+    </h1>
+    <p>
+        Maybe there are things they
+        never found the courage to say.
+        <br><br>
+        Take a moment.
+        <br>
+        Open it when you're ready.
     </p>
-
-    <label>Dear...</label>
-
-    <input
-        id="name"
-        type="text"
-        placeholder="Their name"
+    <button
+        class="open-button"
+        onclick="openLetter()"
     >
-
-    <label>Your letter</label>
-
-    <textarea
-        id="message"
-        placeholder="Start writing here..."
-    ></textarea>
-
-    <label>🎵 A song that reminds you of them</label>
-
-    <input
-        id="song"
-        type="text"
-        placeholder="Song title or link"
-    >
-
-    <button onclick="saveLetter()">
-        Continue ✉
+        Open the letter
     </button>
-
 </div>
-
+<div
+    class="letter"
+    id="letter"
+>
+    <div class="letter-title">
+        Letters I Never Sent
+    </div>
+    <div class="to">
+        To
+        <span id="name"></span>,
+    </div>
+    <div
+        class="message"
+        id="message"
+    ></div>
+    <div
+        class="song"
+        id="song"
+    ></div>
+</div>
+<div
+    class="ending"
+    id="ending"
+>
+    Some letters are meant to be read,
+    <br>
+    even if they were never meant to be sent.
+</div>
+</div>
 <script>
-
-function saveLetter() {
-
-    const name =
-        document.getElementById("name").value;
-
-    const message =
-        document.getElementById("message").value;
-
-    const song =
-        document.getElementById("song").value;
-
-    localStorage.setItem(
-        "letterName",
-        name
-    );
-
-    localStorage.setItem(
-        "letterMessage",
-        message
-    );
-
-    localStorage.setItem(
-        "letterSong",
-        song
-    );
-
-    window.location.href =
-        "preview.html";
+let letterData = null;
+function getLetter() {
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+    const encoded =
+        params.get("letter");
+    if (!encoded) {
+        return null;
+    }
+    try {
+        return JSON.parse(
+            decodeURIComponent(
+                atob(encoded)
+            )
+        );
+    } catch (error) {
+        return null;
+    }
 }
-
+letterData = getLetter();
+function getYouTubeID(url) {
+    try {
+        const parsed =
+            new URL(url);
+        if (
+            parsed.hostname.includes(
+                "youtu.be"
+            )
+        ) {
+            return parsed.pathname
+                .replace("/", "");
+        }
+        if (
+            parsed.hostname.includes(
+                "youtube.com"
+            )
+        ) {
+            return parsed.searchParams
+                .get("v");
+        }
+    } catch (error) {
+        return null;
+    }
+    return null;
+}
+function openLetter() {
+    if (!letterData) {
+        alert(
+            "This letter could not be opened."
+        );
+        return;
+    }
+    document.getElementById(
+        "name"
+    ).textContent =
+        letterData.name;
+    document.getElementById(
+        "message"
+    ).textContent =
+        letterData.message;
+    const songElement =
+        document.getElementById("song");
+    if (letterData.song) {
+        const song =
+            letterData.song.trim();
+        const youtubeID =
+            getYouTubeID(song);
+        if (youtubeID) {
+            songElement.innerHTML =
+                "🎵 A song that belongs to this letter:" +
+                "<br><br>" +
+                "<a href=\"" +
+                song +
+                "\" target=\"_blank\">" +
+                "Open the song on YouTube" +
+                "</a>" +
+                "<iframe " +
+                "class=\"music-player\" " +
+                "src=\"https://www.youtube.com/embed/" +
+                youtubeID +
+                "?autoplay=1&rel=0\" " +
+                "allow=\"autoplay; encrypted-media\" " +
+                "allowfullscreen>" +
+                "</iframe>";
+        } else {
+            songElement.innerHTML =
+                "🎵 A song that belongs to this letter:" +
+                "<br><br>" +
+                "<a href=\"" +
+                song +
+                "\" target=\"_blank\">" +
+                song +
+                "</a>";
+        }
+    } else {
+        songElement.classList.add(
+            "hidden"
+        );
+    }
+    document.getElementById(
+        "intro"
+    ).style.display =
+        "none";
+    document.getElementById(
+        "letter"
+    ).style.display =
+        "block";
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
 </script>
-
 </body>
 </html>
