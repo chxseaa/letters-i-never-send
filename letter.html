@@ -6,7 +6,7 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0"
 >
-<title>Write a Letter | Letters I Never Sent</title>
+<title>Letters I Never Sent</title>
 <style>
     * {
         box-sizing: border-box;
@@ -20,21 +20,22 @@
         font-family: Georgia, serif;
     }
     .container {
+        width: 100%;
         max-width: 650px;
         margin: auto;
     }
     h1 {
         text-align: center;
         color: #e8dcc8;
-        font-weight: normal;
         font-size: 34px;
+        font-weight: normal;
         margin-bottom: 8px;
     }
     .subtitle {
         text-align: center;
         color: #cbbda9;
         font-style: italic;
-        line-height: 1.6;
+        line-height: 1.7;
         margin-bottom: 30px;
     }
     .paper {
@@ -46,7 +47,7 @@
     .intro {
         text-align: center;
         line-height: 1.7;
-        margin-bottom: 28px;
+        margin-bottom: 30px;
     }
     .intro strong {
         font-size: 20px;
@@ -54,8 +55,8 @@
     }
     label {
         display: block;
-        margin-top: 20px;
-        margin-bottom: 7px;
+        margin-top: 22px;
+        margin-bottom: 8px;
         font-size: 15px;
     }
     input,
@@ -73,20 +74,49 @@
     textarea:focus {
         border-color: #796a58;
     }
-    textarea {
-        min-height: 300px;
-        resize: vertical;
-        line-height: 1.8;
-    }
     input::placeholder,
     textarea::placeholder {
         color: #887967;
+    }
+    textarea {
+        min-height: 320px;
+        resize: vertical;
+        line-height: 1.8;
+    }
+    .example {
+        background: #ded1bd;
+        border-left: 3px solid #796a58;
+        padding: 15px;
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 1.7;
+        font-style: italic;
+        color: #5b4e42;
     }
     .hint {
         font-size: 13px;
         font-style: italic;
         opacity: .7;
-        line-height: 1.5;
+        line-height: 1.6;
+        margin-top: 8px;
+    }
+    .song-section {
+        margin-top: 30px;
+        padding: 20px;
+        border: 1px solid #b9aa94;
+        background: #ded1bd;
+    }
+    .song-title {
+        font-size: 18px;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+    .song-description {
+        text-align: center;
+        font-size: 13px;
+        font-style: italic;
+        line-height: 1.6;
+        margin-bottom: 15px;
     }
     button {
         display: block;
@@ -123,15 +153,17 @@
 </h1>
 <p class="subtitle">
     Some words are too difficult to say out loud.
+    <br>
+    So write them down.
 </p>
 <div class="paper">
     <div class="intro">
         <strong>
-            Maybe it's time to let them read it.
+            Write the letter you never sent.
         </strong>
         <br>
-        Write the letter you never found
-        the courage to send.
+        Maybe this time,
+        they'll finally read it.
     </div>
     <label for="name">
         Who is this letter for?
@@ -141,32 +173,59 @@
         type="text"
         placeholder="Their name..."
     >
+    <!-- SONG SECTION -->
+    <div class="song-section">
+        <div class="song-title">
+            🎵 Choose a song
+        </div>
+        <div class="song-description">
+            Choose a song to play while they are
+            reading your message.
+            <br>
+            The song will appear above the letter
+            when they open it.
+        </div>
+        <input
+            id="song"
+            type="text"
+            placeholder="Paste a YouTube link..."
+        >
+    </div>
+    <!-- LETTER -->
     <label for="message">
-        The letter you never sent
+        Your letter
     </label>
     <textarea
         id="message"
         placeholder="Dear you,
 
-There are so many things I’ve wanted to say…
+I’m not really sure how to say this…
 
-Write everything you never got to say here.”
+I just want you to know how grateful I am that you came into my life.
+
+There are so many things I’ve wanted to tell you…
+
+Write your letter here.”
 >
 
+    <div class="example">
+        Example:
+        <br><br>
+        Dear you,
+        <br><br>
+        I've been wanting to say this for a
+        long time. I'm grateful for every
+        moment we've shared, and I hope you
+        know how much you mean to me.
+        <br><br>
+        — Someone who never got to say it
+    </div>
     <p class="hint">
-        You don't need to make it perfect.
-        Just be honest.
+        You don't need perfect words.
+        Just write what your heart wants to say.
     </p>
-    <label for="song">
-        A song that belongs to this letter
-    </label>
-    <input
-        id="song"
-        type="text"
-        placeholder="Paste a YouTube link (optional)"
-    >
     <button onclick="createLetter()">
-        Let Them Read It 💌
+        Send This Letter 💌
     </button>
 </div>
 <div class="back">
@@ -178,11 +237,20 @@ Write everything you never got to say here.”
 <script>
 function createLetter() {
     const name =
-        document.getElementById("name").value.trim();
+        document
+            .getElementById("name")
+            .value
+            .trim();
     const message =
-        document.getElementById("message").value.trim();
+        document
+            .getElementById("message")
+            .value
+            .trim();
     const song =
-        document.getElementById("song").value.trim();
+        document
+            .getElementById("song")
+            .value
+            .trim();
     if (name === "") {
         alert(
             "Who is this letter for? 💌"
@@ -195,16 +263,27 @@ function createLetter() {
         );
         return;
     }
+    if (
+        song !== "" &&
+        !song.includes("youtube.com") &&
+        !song.includes("youtu.be")
+    ) {
+        alert(
+            "Please paste a valid YouTube link for the song. 🎵"
+        );
+        return;
+    }
     const data = {
         name: name,
         message: message,
         song: song
     };
-    const encoded = btoa(
-        encodeURIComponent(
-            JSON.stringify(data)
-        )
-    );
+    const encoded =
+        btoa(
+            encodeURIComponent(
+                JSON.stringify(data)
+            )
+        );
     window.location.href =
         "preview.html?letter=" +
         encoded;
