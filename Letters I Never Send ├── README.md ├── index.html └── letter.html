@@ -15,38 +15,161 @@ content=“width=device-width, initial-scale=1.0”
 body {
     margin: 0;
     min-height: 100vh;
-    padding: 25px 18px;
     background: #241f1b;
     color: #3d332b;
     font-family: Georgia, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 18px;
 }
-.container {
+/* =========================
+   ENVELOPE SCREEN
+========================= */
+.envelope-screen {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+.envelope-screen h1 {
+    color: #e8dcc8;
+    font-weight: normal;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+.envelope-screen p {
+    color: #cbbda9;
+    font-style: italic;
+    margin-bottom: 35px;
+}
+/* ENVELOPE */
+.envelope {
+    position: relative;
+    width: 280px;
+    height: 190px;
+    margin: 0 auto 35px;
+    cursor: pointer;
+    perspective: 800px;
+}
+/* Envelope body */
+.envelope-body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #d8c6aa;
+    border: 1px solid #b9aa94;
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.45);
+}
+/* Envelope front */
+.envelope-front {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-bottom: 100px solid #c9b493;
+    z-index: 4;
+}
+/* Left/right folds */
+.envelope-left {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-top: 95px solid transparent;
+    border-left: 140px solid #bda98a;
+    z-index: 3;
+}
+.envelope-right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-top: 95px solid transparent;
+    border-right: 140px solid #bda98a;
+    z-index: 3;
+}
+/* Envelope flap */
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-top: 100px solid #e0ceb0;
+    transform-origin: top center;
+    z-index: 5;
+    transition:
+        transform 1s ease;
+}
+/* Heart seal */
+.seal {
+    position: absolute;
+    top: 78px;
+    left: 50%;
+    transform:
+        translateX(-50%);
+    font-size: 38px;
+    z-index: 7;
+    transition:
+        opacity .5s ease,
+        transform .5s ease;
+}
+/* OPEN BUTTON */
+.open-button {
+    display: inline-block;
+    padding: 15px 30px;
+    border: 1px solid #cbbda9;
+    background: transparent;
+    color: #e8dcc8;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .2s;
+}
+.open-button:hover {
+    background: #e8dcc8;
+    color: #241f1b;
+}
+/* =========================
+   LETTER
+========================= */
+.letter-screen {
+    display: none;
     width: 100%;
     max-width: 650px;
-    margin: auto;
 }
-.letter {
+.letter-paper {
     background: #e8dcc8;
     padding: 35px 25px;
-    margin-top: 30px;
     box-shadow:
-        0 15px 40px rgba(0,0,0,.4);
+        0 15px 40px rgba(0,0,0,.5);
     animation:
-        appear 1s ease;
+        paperAppear 1.2s ease;
 }
-@keyframes appear {
-    from {
+@keyframes paperAppear {
+    0% {
         opacity: 0;
         transform:
-            translateY(20px);
+            translateY(100px)
+            scale(.95);
     }
-    to {
+    100% {
         opacity: 1;
         transform:
-            translateY(0);
+            translateY(0)
+            scale(1);
     }
 }
-.title {
+.letter-title {
     text-align: center;
     color: #796a58;
     font-size: 14px;
@@ -54,7 +177,7 @@ body {
     margin-bottom: 35px;
 }
 .dear {
-    font-size: 20px;
+    font-size: 21px;
     margin-bottom: 25px;
 }
 .message {
@@ -62,9 +185,12 @@ body {
     line-height: 1.9;
     font-size: 17px;
 }
+/* =========================
+   SONG
+========================= */
 .song {
     margin-bottom: 30px;
-    padding: 18px;
+    padding: 20px;
     background: #ded1bd;
     border: 1px solid #b9aa94;
     text-align: center;
@@ -82,7 +208,6 @@ body {
     display: inline-block;
     margin-top: 12px;
     color: #3d332b;
-    word-break: break-word;
 }
 .music-player {
     width: 100%;
@@ -90,6 +215,9 @@ body {
     margin-top: 15px;
     border: none;
 }
+/* =========================
+   ENDING
+========================= */
 .ending {
     text-align: center;
     color: #cbbda9;
@@ -107,8 +235,6 @@ body {
 .respond h2 {
     font-size: 21px;
     font-weight: normal;
-    color: #3d332b;
-    margin-top: 0;
 }
 .respond p {
     color: #5f5348;
@@ -118,35 +244,97 @@ body {
 .respond button {
     width: 100%;
     padding: 15px;
-    margin-top: 12px;
+    margin-top: 10px;
     border: none;
     background: #3d332b;
     color: #e8dcc8;
     font-family: Georgia, serif;
     font-size: 16px;
-    cursor: pointer;
 }
-.respond button:hover {
-    background: #51443a;
+/* =========================
+   ANIMATIONS
+========================= */
+.opening .envelope-flap {
+    transform:
+        rotateX(180deg);
+}
+.opening .seal {
+    opacity: 0;
+    transform:
+        translateX(-50%)
+        scale(0);
+}
+.opening .envelope {
+    animation:
+        envelopeMove 1.5s ease forwards;
+}
+@keyframes envelopeMove {
+    0% {
+        transform:
+            translateY(0);
+    }
+    100% {
+        transform:
+            translateY(35px);
+    }
 }
 .hidden {
-    display: none;
+    display: none !important;
 }
-.error {
-    color: #e8dcc8;
-    text-align: center;
-    margin-top: 100px;
-    line-height: 1.7;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 </style>
 </head>
 <body>
-<div class="container">
+<!-- =========================
+     ENVELOPE
+========================= -->
 <div
-    class="letter"
-    id="letter"
+    class="envelope-screen"
+    id="envelopeScreen"
 >
-<div class="title">
+<h1>
+Someone left you a letter. 💌
+</h1>
+<p>
+There are words waiting for you.
+</p>
+<div
+    class="envelope"
+    id="envelope"
+>
+<div class="envelope-body"></div>
+<div class="envelope-left"></div>
+<div class="envelope-right"></div>
+<div class="envelope-front"></div>
+<div class="envelope-flap"></div>
+<div class="seal">
+💌
+</div>
+</div>
+
+<button
+class=“open-button”
+onclick=“openLetter()”
+
+Open the Letter
+</button>
+</div>
+<!-- =========================
+     LETTER
+========================= -->
+<div
+    class="letter-screen"
+    id="letterScreen"
+>
+<div class="letter-paper">
+<div class="letter-title">
 Letters I Never Sent
 </div>
 <div class="dear">
@@ -166,7 +354,7 @@ Please play the song while reading.
 </div>
 <div id="songContent"></div>
 </div>
-<!-- LETTER -->
+<!-- MESSAGE -->
 <div
     class="message"
     id="message"
@@ -177,15 +365,15 @@ Some words are meant to be read,
 <br>
 even if they were never said.
 </div>
-<!-- RESPOND -->
+<!-- RESPONSE -->
 <div class="respond">
 <h2>
 Do you want to respond
 or create a letter too?
 </h2>
 <p>
-Maybe you have words you've
-never sent either.
+Maybe you have words
+you've never sent either.
 </p>
 
 <button
@@ -194,12 +382,6 @@ onclick=“location.href=‘letter.html’”
 Write a Letter Too 💌
 </button>
 </div>
-</div>
-<div
-    class="error hidden"
-    id="error"
->
-This letter could not be opened. 💌
 </div>
 <script>
 function getLetter() {
@@ -251,15 +433,7 @@ function getYouTubeID(url) {
 }
 const letter =
     getLetter();
-if (!letter) {
-    document.getElementById(
-        "letter"
-    ).classList.add("hidden");
-    document.getElementById(
-        "error"
-    ).classList.remove("hidden");
-}
-else {
+if (letter) {
     document.getElementById(
         "name"
     ).textContent =
@@ -268,7 +442,7 @@ else {
         "message"
     ).textContent =
         letter.message;
-    const songBox =
+    const song =
         document.getElementById(
             "song"
         );
@@ -277,16 +451,16 @@ else {
             "songContent"
         );
     if (letter.song) {
-        const song =
-            letter.song.trim();
         const youtubeID =
-            getYouTubeID(song);
+            getYouTubeID(
+                letter.song
+            );
         if (youtubeID) {
             songContent.innerHTML =
                 "<a " +
                 "class='song-link' " +
                 "href='" +
-                song +
+                letter.song +
                 "' " +
                 "target='_blank'>" +
                 "Open song on YouTube 🎵" +
@@ -296,8 +470,7 @@ else {
                 "src='https://www.youtube.com/embed/" +
                 youtubeID +
                 "?autoplay=1&rel=0' " +
-                "allow='autoplay; encrypted-media' " +
-                "allowfullscreen>" +
+                "allow='autoplay; encrypted-media'>" +
                 "</iframe>";
         }
         else {
@@ -305,7 +478,7 @@ else {
                 "<a " +
                 "class='song-link' " +
                 "href='" +
-                song +
+                letter.song +
                 "' " +
                 "target='_blank'>" +
                 "Play the song 🎵" +
@@ -313,10 +486,31 @@ else {
         }
     }
     else {
-        songBox.classList.add(
+        song.style.display =
+            "none";
+    }
+}
+function openLetter() {
+    const screen =
+        document.getElementById(
+            "envelopeScreen"
+        );
+    screen.classList.add(
+        "opening"
+    );
+    setTimeout(function() {
+        screen.classList.add(
             "hidden"
         );
-    }
+        document.getElementById(
+            "letterScreen"
+        ).style.display =
+            "block";
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }, 1500);
 }
 </script>
 </body>
