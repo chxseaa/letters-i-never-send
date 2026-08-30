@@ -1,224 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Write a Letter | Letters I Never Send</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            padding: 30px 18px;
-            background: #241f1b;
-            color: #3d332b;
-            font-family: Georgia, serif;
-        }
-
-        .container {
-            max-width: 650px;
-            margin: auto;
-        }
-
-        h1 {
-            text-align: center;
-            color: #e8dcc8;
-            font-weight: normal;
-            font-size: 34px;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #cbbda9;
-            font-style: italic;
-            margin-bottom: 30px;
-        }
-
-        .paper {
-            background: #e8dcc8;
-            padding: 30px 25px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, .4);
-        }
-
-        label {
-            display: block;
-            margin-top: 18px;
-            margin-bottom: 7px;
-            font-size: 15px;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            border: 1px solid #b9aa94;
-            background: #f1e7d6;
-            color: #3d332b;
-            padding: 13px;
-            font-family: Georgia, serif;
-            font-size: 16px;
-            outline: none;
-        }
-
-        textarea {
-            min-height: 280px;
-            resize: vertical;
-            line-height: 1.7;
-        }
-
-        input:focus,
-        textarea:focus {
-            border-color: #796a58;
-        }
-
-        .hint {
-            font-size: 13px;
-            font-style: italic;
-            margin-top: 6px;
-            opacity: .75;
-        }
-
-        button {
-            display: block;
-            width: 100%;
-            margin-top: 25px;
-            padding: 15px;
-            border: none;
-            background: #3d332b;
-            color: #e8dcc8;
-            font-family: Georgia, serif;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:active {
-            transform: scale(.98);
-        }
-
-        .back {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .back a {
-            color: #cbbda9;
-            text-decoration: none;
-        }
-    </style>
+    <title>Letters I Never Sent</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background: #241f1b;
+        color: #e8dcc8;
+        font-family: Georgia, serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 25px;
+    }
+    .container {
+        width: 100%;
+        max-width: 650px;
+    }
+    .heart {
+        font-size: 65px;
+        margin-bottom: 20px;
+    }
+    h1 {
+        font-size: 42px;
+        font-weight: normal;
+        margin: 0 0 15px;
+    }
+    .subtitle {
+        color: #cbbda9;
+        font-style: italic;
+        font-size: 18px;
+        line-height: 1.8;
+        margin: 0 auto;
+    }
+    .button {
+        display: inline-block;
+        margin-top: 35px;
+        padding: 16px 28px;
+        border: 1px solid #cbbda9;
+        background: transparent;
+        color: #e8dcc8;
+        font-family: Georgia, serif;
+        font-size: 16px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: .2s;
+    }
+    .button:hover {
+        background: #e8dcc8;
+        color: #241f1b;
+    }
+    .footer {
+        margin-top: 45px;
+        color: #8e8273;
+        font-size: 12px;
+        font-style: italic;
+    }
+</style>
 </head>
-
 <body>
-
 <div class="container">
-
-    <h1>Write a Letter</h1>
-
+    <div class="heart">💌</div>
+    <h1>Letters I Never Sent</h1>
     <p class="subtitle">
-        For the words you never got to say.
+        Some words are too difficult to say out loud.
+        <br>
+        Some feelings are easier to write.
+        <br>
+        Maybe it's time they finally reach someone.
     </p>
-
-    <div class="paper">
-
-        <label for="name">
-            Their name
-        </label>
-
-        <input
-            id="name"
-            type="text"
-            placeholder="Cyrus..."
-        >
-
-        <label for="message">
-            Your letter
-        </label>
-
-        <textarea
-            id="message"
-            placeholder="Write everything you never got to say..."
-        ></textarea>
-
-        <p class="hint">
-            Take your time. There is no perfect way to say what you feel.
-        </p>
-
-        <label for="song">
-            A song that reminds you of them
-        </label>
-
-        <input
-            id="song"
-            type="text"
-            placeholder="Song title or YouTube link"
-        >
-
-        <button onclick="createLetter()">
-            Create & Share Letter 💌
-        </button>
-
+    <a href="letter.html" class="button">
+        Write a Letter →
+    </a>
+    <div class="footer">
+        For the words you never got to say.
     </div>
-
-    <div class="back">
-        <a href="index.html">← Back home</a>
-    </div>
-
 </div>
-
-
-<script>
-
-function createLetter() {
-
-    const name =
-        document.getElementById("name").value.trim();
-
-    const message =
-        document.getElementById("message").value.trim();
-
-    const song =
-        document.getElementById("song").value.trim();
-
-
-    if (name === "") {
-
-        alert("Please enter their name. 💌");
-
-        return;
-    }
-
-
-    if (message === "") {
-
-        alert("Please write your letter first. 💌");
-
-        return;
-    }
-
-
-    const data = {
-    name: name,
-    message: message,
-    song: song
-};
-
-const encoded =
-    btoa(
-        encodeURIComponent(
-            JSON.stringify(data)
-        )
-    );
-
-window.location.href =
-    "preview.html?letter=" + encoded;
-}
-
-</script>
-
 </body>
 </html>
