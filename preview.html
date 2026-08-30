@@ -141,15 +141,39 @@
 
 <script>
 
-const name =
-    localStorage.getItem("letterName") || "You";
+const params =
+    new URLSearchParams(window.location.search);
 
-const message =
-    localStorage.getItem("letterMessage") || "";
+const encoded =
+    params.get("letter");
 
-const song =
-    localStorage.getItem("letterSong") ||
-    "No song chosen.";
+let name = "You";
+let message = "";
+let song = "No song chosen.";
+
+if (encoded) {
+
+    try {
+
+        const data =
+            JSON.parse(
+                decodeURIComponent(
+                    atob(encoded)
+                )
+            );
+
+        name = data.name || "You";
+        message = data.message || "";
+        song = data.song || "No song chosen.";
+
+    } catch (error) {
+
+        console.log(
+            "Unable to read the letter."
+        );
+
+    }
+}
 
 
 document.getElementById("dear").textContent =
