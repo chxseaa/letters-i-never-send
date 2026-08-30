@@ -6,7 +6,7 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0"
 >
-<title>Your Letter Is Ready</title>
+<title>Your Letter Is Ready | Letters I Never Sent</title>
 <style>
     * {
         box-sizing: border-box;
@@ -20,6 +20,7 @@
         font-family: Georgia, serif;
     }
     .container {
+        width: 100%;
         max-width: 650px;
         margin: auto;
     }
@@ -44,20 +45,24 @@
             0 15px 40px rgba(0,0,0,.4);
     }
     .to {
-        font-size: 18px;
+        font-size: 19px;
         margin-bottom: 25px;
     }
     .message {
         white-space: pre-wrap;
-        line-height: 1.8;
+        line-height: 1.9;
         font-size: 17px;
     }
     .song {
-        margin-top: 30px;
-        padding-top: 20px;
-        border-top: 1px solid #b9aa94;
-        font-size: 14px;
+        margin-bottom: 30px;
+        padding: 20px;
+        border-bottom: 1px solid #b9aa94;
+        text-align: center;
         font-style: italic;
+    }
+    .song a {
+        color: #3d332b;
+        word-break: break-word;
     }
     .share-box {
         margin-top: 30px;
@@ -65,14 +70,15 @@
         border: 1px solid #796a58;
         text-align: center;
     }
-    .share-box strong {
-        font-size: 20px;
+    .share-box h2 {
+        font-size: 21px;
         font-weight: normal;
+        margin-top: 0;
     }
     .share-box p {
         color: #cbbda9;
         line-height: 1.7;
-        font-size: 14px;
+        font-style: italic;
     }
     .link {
         width: 100%;
@@ -82,10 +88,11 @@
         color: #3d332b;
         font-family: Arial, sans-serif;
         font-size: 12px;
+        outline: none;
     }
     button {
         width: 100%;
-        padding: 15px;
+        padding: 16px;
         margin-top: 12px;
         border: none;
         background: #e8dcc8;
@@ -98,6 +105,14 @@
     button:hover {
         background: #f1e7d6;
     }
+    .share-main {
+        background: #3d332b;
+        color: #e8dcc8;
+        border: none;
+    }
+    .share-main:hover {
+        background: #51443a;
+    }
     .back {
         text-align: center;
         margin-top: 20px;
@@ -106,12 +121,18 @@
         color: #cbbda9;
         text-decoration: none;
     }
+    .success {
+        display: none;
+        margin-top: 15px;
+        color: #cbbda9;
+        font-style: italic;
+    }
 </style>
 </head>
 <body>
 <div class="container">
 <h1>
-    Your Letter Is Ready
+    Your Letter Is Ready 💌
 </h1>
 <p class="subtitle">
     You wrote the words.
@@ -120,41 +141,51 @@
     they're meant for.
 </p>
 <div class="paper">
+    <div
+        class="song"
+        id="song"
+    ></div>
     <div class="to">
-        To:
-        <span id="name"></span>
+        Dear
+        <span id="name"></span>,
     </div>
     <div
         class="message"
         id="message"
     ></div>
-    <div
-        class="song"
-        id="song"
-    ></div>
 </div>
 <div class="share-box">
-    <strong>
-        Give them the letter 💌
-    </strong>
+    <h2>
+        Ready to send it? 💌
+    </h2>
     <p>
-        Copy the link below and send it
-        to them.
+        Your letter has been created.
         <br>
-        They will see the letter
-        when they open it.
+        Copy the link below and send it
+        to the person you wrote it for.
     </p>
     <input
         class="link"
         id="shareLink"
         readonly
     >
-    <button onclick="copyLink()">
-        Copy Letter Link 🔗
-    </button>
-    <button onclick="shareLetter()">
+    <button
+        class="share-main"
+        onclick="shareLetter()"
+    >
         Share Letter 💌
     </button>
+    <button
+        onclick="copyLink()"
+    >
+        Copy Letter Link 🔗
+    </button>
+    <div
+        class="success"
+        id="success"
+    >
+        Link copied! Now send it to them. 💌
+    </div>
 </div>
 <div class="back">
     <a href="letter.html">
@@ -172,7 +203,7 @@ function getLetter() {
         params.get("letter");
     if (!encoded) {
         alert(
-            "No letter found."
+            "No letter was found."
         );
         return null;
     }
@@ -189,7 +220,8 @@ function getLetter() {
         return null;
     }
 }
-const letter = getLetter();
+const letter =
+    getLetter();
 if (letter) {
     document.getElementById(
         "name"
@@ -199,26 +231,42 @@ if (letter) {
         "message"
     ).textContent =
         letter.message;
-    const songElement =
+    const song =
         document.getElementById("song");
     if (letter.song) {
-        songElement.textContent =
-            "🎵 " + letter.song;
+        song.innerHTML =
+            "🎵 The song chosen for this letter:" +
+            "<br><br>" +
+            "<a href=\"" +
+            letter.song +
+            "\" target=\"_blank\">" +
+            letter.song +
+            "</a>";
     } else {
-        songElement.style.display =
+        song.style.display =
             "none";
     }
-    const currentURL =
-        window.location.href;
-    const viewURL =
-        currentURL.replace(
-            "preview.html",
-            "view.html"
+    const encoded =
+        new URLSearchParams(
+            window.location.search
+        ).get("letter");
+    const baseURL =
+        window.location.href
+            .split("?")[0]
+            .replace(
+                "preview.html",
+                "view.html"
+            );
+    const finalLink =
+        baseURL +
+        "?letter=" +
+        encodeURIComponent(
+            encoded
         );
     document.getElementById(
         "shareLink"
     ).value =
-        viewURL;
+        finalLink;
 }
 function copyLink() {
     const input =
@@ -226,12 +274,17 @@ function copyLink() {
             "shareLink"
         );
     input.select();
+    input.setSelectionRange(
+        0,
+        99999
+    );
     navigator.clipboard
         .writeText(input.value)
         .then(function() {
-            alert(
-                "Letter link copied! 💌"
-            );
+            document.getElementById(
+                "success"
+            ).style.display =
+                "block";
         })
         .catch(function() {
             alert(
@@ -250,11 +303,12 @@ async function shareLetter() {
                 title:
                     "Someone left you a letter 💌",
                 text:
-                    "Someone left you a letter. Open it when you're ready.",
-                url: link
+                    "Someone left you a letter. Please play the song while reading.",
+                url:
+                    link
             });
         } catch (error) {
-            // User cancelled sharing.
+            // Sharing cancelled.
         }
     } else {
         copyLink();
