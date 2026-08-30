@@ -3,92 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Letters I Never Send</title>
-
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: #241f1b;
-            color: #e8dcc8;
-            font-family: Georgia, serif;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .container {
-            padding: 30px;
-            max-width: 600px;
-        }
-
-        .small {
-            font-size: 11px;
-            letter-spacing: 4px;
-            color: #a99b8a;
-        }
-
-        h1 {
-            font-size: 48px;
-            font-weight: normal;
-            line-height: 1;
-            margin: 25px 0;
-        }
-
-        p {
-            color: #b9aa98;
-            font-style: italic;
-            font-size: 18px;
-        }
-
-        button {
-            margin-top: 30px;
-            padding: 15px 30px;
-
-            background: transparent;
-            color: #e8dcc8;
-
-            border: 1px solid #c7b79f;
-            border-radius: 30px;
-
-            font-family: Georgia, serif;
-            font-size: 16px;
-        }
-
-        button:active {
-            background: #e8dcc8;
-            color: #241f1b;
-        }
-    </style>
+    <title>Letters I Never Sent</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background: #241f1b;
+        color: #e8dcc8;
+        font-family: Georgia, serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 25px;
+    }
+    .container {
+        width: 100%;
+        max-width: 650px;
+    }
+    .heart {
+        font-size: 65px;
+        margin-bottom: 20px;
+    }
+    h1 {
+        font-size: 42px;
+        font-weight: normal;
+        margin: 0 0 15px;
+    }
+    .subtitle {
+        color: #cbbda9;
+        font-style: italic;
+        font-size: 18px;
+        line-height: 1.8;
+        margin: 0 auto;
+    }
+    .button {
+        display: inline-block;
+        margin-top: 35px;
+        padding: 16px 28px;
+        border: 1px solid #cbbda9;
+        background: transparent;
+        color: #e8dcc8;
+        font-family: Georgia, serif;
+        font-size: 16px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: .2s;
+    }
+    .button:hover {
+        background: #e8dcc8;
+        color: #241f1b;
+    }
+    .footer {
+        margin-top: 45px;
+        color: #8e8273;
+        font-size: 12px;
+        font-style: italic;
+    }
+</style>
 </head>
-
 <body>
-
-    <div class="container">
-
-        <div class="small">
-            SOME WORDS ARE MEANT TO BE WRITTEN
-        </div>
-
-        <h1>
-            Letters I<br>
-            Never Send
-        </h1>
-
-        <p>
-            For the words that stayed in your heart.
-        </p>
-
-        <a href="letter.html">
-    <button>
-        ✉ Write a Letter
-    </button>
-</a>
-
+<div class="container">
+    <div class="heart">💌</div>
+    <h1>Letters I Never Sent</h1>
+    <p class="subtitle">
+        Some words are too difficult to say out loud.
+        <br>
+        Some feelings are easier to write.
+        <br>
+        Maybe it's time they finally reach someone.
+    </p>
+    <a href="letter.html" class="button">
+        Write a Letter →
+    </a>
+    <div class="footer">
+        For the words you never got to say.
     </div>
-
+</div>
 </body>
 </html>
