@@ -201,24 +201,21 @@ function createLetter() {
     }
 
 
-    localStorage.setItem(
-        "letterName",
-        name
+    const data = {
+    name: name,
+    message: message,
+    song: song
+};
+
+const encoded =
+    btoa(
+        encodeURIComponent(
+            JSON.stringify(data)
+        )
     );
 
-    localStorage.setItem(
-        "letterMessage",
-        message
-    );
-
-    localStorage.setItem(
-        "letterSong",
-        song
-    );
-
-
-    window.location.href =
-        "preview.html";
+window.location.href =
+    "preview.html?letter=" + encoded;
 }
 
 </script>
