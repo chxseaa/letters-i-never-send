@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Letter For You 💌</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #241f1b;
+    color: #3d332b;
+    font-family: Georgia, serif;
+}
+/* =========================
+   OPEN SCREEN
+========================= */
+#openScreen {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+}
+.open-container {
+    width: 100%;
+    max-width: 500px;
+}
+.small-text {
+    color: #cbbda9;
+    font-size: 15px;
+    font-style: italic;
+}
+.open-title {
+    color: #e8dcc8;
+    font-size: 32px;
+    font-weight: normal;
+    line-height: 1.4;
+    margin: 20px 0;
+}
+/* =========================
+   ENVELOPE
+========================= */
+.envelope {
+    width: 230px;
+    height: 150px;
+    margin: 35px auto;
+    position: relative;
+    background: #d7c8b2;
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.4);
+    cursor: pointer;
+}
+/* Paper */
+.envelope-paper {
+    position: absolute;
+    width: 190px;
+    height: 125px;
+    left: 20px;
+    top: 10px;
+    background: #f1e7d6;
+    transition:
+        transform 1s ease;
+    z-index: 1;
+}
+/* Flap */
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left:
+        115px solid transparent;
+    border-right:
+        115px solid transparent;
+    border-top:
+        85px solid #b9aa94;
+    transform-origin: top;
+    transition:
+        transform 1s ease;
+    z-index: 3;
+}
+/* Front */
+.envelope-front {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    background: #cbbda9;
+    clip-path:
+        polygon(
+            0 0,
+            50% 70%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+    z-index: 2;
+}
+/* Open animation */
+.envelope.open .flap {
+    transform:
+        rotateX(180deg);
+}
+.envelope.open .envelope-paper {
+    transform:
+        translateY(-100px);
+}
+/* Button */
+.open-button {
+    border:
+        1px solid #cbbda9;
+    background:
+        transparent;
+    color:
+        #e8dcc8;
+    padding:
+        15px 28px;
+    font-family:
+        Georgia, serif;
+    font-size:
+        16px;
+    cursor:
+        pointer;
+}
+/* =========================
+   LETTER PAGE
+========================= */
+#letterPage {
+    display: none;
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+    padding:
+        35px 18px 60px;
+    animation:
+        pageAppear 1.2s ease;
+}
+@keyframes pageAppear {
+    from {
+        opacity: 0;
+        transform:
+            translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+/* =========================
+   LETTER PAPER
+========================= */
+.letter-paper {
+    background:
+        #e8dcc8;
+    padding:
+        35px 25px;
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.45);
+}
+/* =========================
+   HEADER
+========================= */
+.from {
+    text-align: center;
+    color:
+        #796a58;
+    font-size:
+        14px;
+    font-style:
+        italic;
+}
+.to {
+    text-align: center;
+    font-size:
+        21px;
+    margin-top:
+        8px;
+    margin-bottom:
+        35px;
+}
+/* =========================
+   SONG
+========================= */
+.song-area {
+    background:
+        #ded1bd;
+    border:
+        1px solid #b9aa94;
+    padding:
+        22px;
+    margin-bottom:
+        30px;
+    text-align:
+        center;
+}
+.song-area h2 {
+    font-size:
+        19px;
+    font-weight:
+        normal;
+    margin:
+        0 0 8px;
+}
+.song-area p {
+    font-size:
+        14px;
+    font-style:
+        italic;
+    line-height:
+        1.7;
+    margin:
+        0 0 15px;
+}
+.play-button {
+    display:
+        inline-block;
+    padding:
+        12px 20px;
+    background:
+        #3d332b;
+    color:
+        #e8dcc8;
+    text-decoration:
+        none;
+    cursor:
+        pointer;
+}
+/* Player */
+.player {
+    margin-top:
+        18px;
+}
+.player iframe {
+    width:
+        100%;
+    border:
+        none;
+    border-radius:
+        4px;
+}
+/* =========================
+   MESSAGE
+========================= */
+.dear {
+    font-size:
+        21px;
+    margin-bottom:
+        25px;
+}
+.message {
+    white-space:
+        pre-wrap;
+    font-size:
+        17px;
+    line-height:
+        1.95;
+}
+/* =========================
+   BOTTOM
+========================= */
+.bottom {
+    text-align:
+        center;
+    color:
+        #cbbda9;
+    margin-top:
+        35px;
+    line-height:
+        1.8;
+}
+.bottom h2 {
+    font-size:
+        21px;
+    font-weight:
+        normal;
+    color:
+        #e8dcc8;
+}
+.bottom a {
+    display:
+        inline-block;
+    margin:
+        8px;
+    padding:
+        13px 20px;
+    border:
+        1px solid #cbbda9;
+    color:
+        #e8dcc8;
+    text-decoration:
+        none;
+}
+</style>
+</head>
+<body>
+<!-- =========================
+     OPEN LETTER
+========================= -->
+<div id="openScreen">
+<div class="open-container">
+    <div class="small-text">
+        Someone left something for you.
+    </div>
+    <h1 class="open-title">
+        A letter you weren't expecting. 💌
+    </h1>
+    <div
+        id="envelope"
+        class="envelope"
+    >
+        <div
+            class="envelope-paper"
+        ></div>
+        <div
+            class="flap"
+        ></div>
+        <div
+            class="envelope-front"
+        ></div>
+    </div>
+    <button
+        id="openButton"
+        class="open-button"
+        type="button"
+    >
+        Open the Letter 💌
+    </button>
+</div>
+</div>
+<!-- =========================
+     LETTER
+========================= -->
+<div id="letterPage">
+<div class="letter-paper">
+    <div class="from">
+        From: Letters I Never Sent
+    </div>
+    <div class="to">
+        To:
+        <span id="recipientName"></span>
+    </div>
+    <!-- SONG -->
+    <div
+        id="songArea"
+        class="song-area"
+    >
+        <h2>
+            🎵 Before you read...
+        </h2>
+        <p>
+            Please play the song first.
+            <br>
+            Let it play while you read the letter.
+            Maybe you'll feel the words a little differently with the music playing.
+        </p>
+        <div
+            id="player"
+            class="player"
+        ></div>
+        <a
+            id="externalSong"
+            class="play-button"
+            href="#"
+            target="_blank"
+            rel="noopener"
+        >
+            Play the Song 🎵
+        </a>
+    </div>
+    <!-- LETTER -->
+    <div class="dear">
+        Dear
+        <span id="dearName"></span>,
+    </div>
+    <div
+        id="message"
+        class="message"
+    ></div>
+</div>
+<!-- =========================
+     BOTTOM
+========================== -->
+<div class="bottom">
+    <h2>
+        What now? 🤍
+    </h2>
+    <p>
+        Did this letter make you feel something?
+        <br>
+        You can respond, or maybe write a letter of your own.
+    </p>
+    <a href="letter.html">
+        ✍️ Write a Letter Too
+    </a>
+    <a href="index.html">
+        💌 Letters I Never Sent
+    </a>
+</div>
+</div>
+<script>
+/* =========================
+   DECODE LETTER
+========================= */
+function decodeLetter(encoded) {
+    const binary =
+        atob(encoded);
+    const bytes =
+        new Uint8Array(
+            binary.length
+        );
+    for (
+        let i = 0;
+        i < binary.length;
+        i++
+    ) {
+        bytes[i] =
+            binary.charCodeAt(i);
+    }
+    const json =
+        new TextDecoder().decode(
+            bytes
+        );
+    return JSON.parse(json);
+}
+/* =========================
+   GET LETTER
+========================= */
+let letterData = null;
+try {
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+    const encoded =
+        params.get("letter");
+    if (!encoded) {
+        throw new Error(
+            "No letter found."
+        );
+    }
+    letterData =
+        decodeLetter(
+            encoded
+        );
+}
+catch (error) {
+    document.body.innerHTML = `
+        <div style="
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            padding:25px;
+            color:#e8dcc8;
+            font-family:Georgia,serif;
+        ">
+            <div>
+                <h1>
+                    This letter couldn't be opened. 💌
+                </h1>
+                <p>
+                    The letter link may be incomplete.
+                </p>
+                <a
+                    href="index.html"
+                    style="
+                        color:#cbbda9;
+                    "
+                >
+                    Go back
+                </a>
+            </div>
+        </div>
+    `;
+}
+/* =========================
+   DISPLAY
+========================= */
+if (letterData) {
+    document.getElementById(
+        "recipientName"
+    ).textContent =
+        letterData.name;
+    document.getElementById(
+        "dearName"
+    ).textContent =
+        letterData.name;
+    document.getElementById(
+        "message"
+    ).textContent =
+        letterData.message;
+}
+/* =========================
+   SONG
+========================= */
+const song =
+    letterData
+        ? letterData.song
+        : "";
+const songArea =
+    document.getElementById(
+        "songArea"
+    );
+const player =
+    document.getElementById(
+        "player"
+    );
+const externalSong =
+    document.getElementById(
+        "externalSong"
+    );
+/* =========================
+   YOUTUBE ID
+========================= */
+function getYouTubeID(url) {
+    try {
+        const parsed =
+            new URL(url);
+        if (
+            parsed.hostname.includes(
+                "youtu.be"
+            )
+        ) {
+            return parsed.pathname
+                .replace(
+                    "/",
+                    ""
+                );
+        }
+        if (
+            parsed.hostname.includes(
+                "youtube.com"
+            )
+        ) {
+            return parsed.searchParams.get(
+                "v"
+            );
+        }
+    }
+    catch (error) {
+        return null;
+    }
+    return null;
+}
+/* =========================
+   SPOTIFY
+========================= */
+function getSpotifyEmbed(url) {
+    try {
+        const parsed =
+            new URL(url);
+        if (
+            !parsed.hostname.includes(
+                "spotify.com"
+            )
+        ) {
+            return null;
+        }
+        const parts =
+            parsed.pathname
+                .split("/")
+                .filter(Boolean);
+        const type =
+            parts[0];
+        const id =
+            parts[1];
+        if (
+            id &&
+            (
+                type === "track" ||
+                type === "album" ||
+                type === "playlist"
+            )
+        ) {
+            return (
+                "https://open.spotify.com/embed/" +
+                type +
+                "/" +
+                id
+            );
+        }
+    }
+    catch (error) {
+        return null;
+    }
+    return null;
+}
+/* =========================
+   SHOW SONG
+========================= */
+function showSong(url) {
+    if (!url) {
+        songArea.style.display =
+            "none";
+        return;
+    }
+    externalSong.href =
+        url;
+    /* YouTube */
+    const youtubeID =
+        getYouTubeID(url);
+    if (youtubeID) {
+        player.innerHTML = `
+            <iframe
+                height="160"
+                src="https://www.youtube.com/embed/${youtubeID}"
+                title="Song"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowfullscreen
+            ></iframe>
+        `;
+        externalSong.style.display =
+            "none";
+        return;
+    }
+    /* Spotify */
+    const spotify =
+        getSpotifyEmbed(url);
+    if (spotify) {
+        player.innerHTML = `
+            <iframe
+                src="${spotify}"
+                height="152"
+                title="Spotify song"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+            ></iframe>
+        `;
+        externalSong.style.display =
+            "none";
+        return;
+    }
+    /* Other link */
+    player.innerHTML = "";
+    externalSong.style.display =
+        "inline-block";
+}
+/* Run song */
+showSong(song);
+/* =========================
+   OPEN ENVELOPE
+========================= */
+document.getElementById(
+    "openButton"
+).addEventListener(
+    "click",
+    function() {
+        const envelope =
+            document.getElementById(
+                "envelope"
+            );
+        envelope.classList.add(
+            "open"
+        );
+        document.getElementById(
+            "openButton"
+        ).style.display =
+            "none";
+        setTimeout(
+            function() {
+                document.getElementById(
+                    "openScreen"
+                ).style.display =
+                    "none";
+                document.getElementById(
+                    "letterPage"
+                ).style.display =
+                    "block";
+                window.scrollTo(
+                    0,
+                    0
+                );
+            },
+            1100
+        );
+    }
+);
+</script>
+</body>
+</html>
