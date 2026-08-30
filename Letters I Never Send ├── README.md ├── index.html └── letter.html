@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Write a Letter | Letters I Never Send</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 30px 20px;
+            background: #241f1b;
+            color: #e8dcc8;
+            font-family: Georgia, serif;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: normal;
+            font-size: 38px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #a99b8a;
+            font-style: italic;
+            margin-bottom: 35px;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            box-sizing: border-box;
+
+            background: #e8dcc8;
+            color: #302923;
+
+            border: none;
+            border-radius: 4px;
+
+            font-family: Georgia, serif;
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 300px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        button {
+            display: block;
+            margin: 30px auto;
+
+            padding: 15px 30px;
+
+            background: transparent;
+            color: #e8dcc8;
+
+            border: 1px solid #c7b79f;
+            border-radius: 30px;
+
+            font-family: Georgia, serif;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:active {
+            background: #e8dcc8;
+            color: #241f1b;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Write Your Letter</h1>
+
+    <p class="subtitle">
+        Write everything you never got to say.
+    </p>
+
+    <label>Dear...</label>
+
+    <input
+        id="name"
+        type="text"
+        placeholder="Their name"
+    >
+
+    <label>Your letter</label>
+
+    <textarea
+        id="message"
+        placeholder="Start writing here..."
+    ></textarea>
+
+    <label>🎵 A song that reminds you of them</label>
+
+    <input
+        id="song"
+        type="text"
+        placeholder="Song title or link"
+    >
+
+    <button onclick="saveLetter()">
+        Continue ✉
+    </button>
+
+</div>
+
+<script>
+
+function saveLetter() {
+
+    const name =
+        document.getElementById("name").value;
+
+    const message =
+        document.getElementById("message").value;
+
+    const song =
+        document.getElementById("song").value;
+
+    localStorage.setItem(
+        "letterName",
+        name
+    );
+
+    localStorage.setItem(
+        "letterMessage",
+        message
+    );
+
+    localStorage.setItem(
+        "letterSong",
+        song
+    );
+
+    window.location.href =
+        "preview.html";
+}
+
+</script>
+
+</body>
+</html>
